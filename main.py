@@ -1,33 +1,23 @@
 import sys
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow
 
-class Window(QMainWindow):
+def application():
+    app = QApplication(sys.argv)
+    window = QMainWindow()
 
-    def __init__(self, parent=None):
+    window.setWindowTitle("Игрушка")
+    window.setGeometry(300, 250, 800, 600)
 
-        super().__init__(parent)
-        self.setWindowTitle("Python Menus &amp; Toolbars")
-        self.resize(400, 200)
-        self.centralWidget = QLabel("Hello, World")
-        self.centralWidget.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-        self.setCentralWidget(self.centralWidget)
-        self._createMenuBar()
+    main_text = QtWidgets.QLabel(window)
+    main_text.setText("Кликомания")
+    main_text.move(400, 300)
 
-    def _createMenuBar(self):
-        menuBar = self.menuBar()
-        File = menuBar.addMenu("File")
-        menuBar.addMenu(File)
-        edit = menuBar.addMenu("Edit")
-        menuBar.addMenu(edit)
-        helpM =menuBar.addMenu("Help")
-        menuBar.addMenu(helpM)
+    window.show()
+    sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    win = Window()
-    win.show()
-    sys.exit(app.exec_())
+    application()
     #123
