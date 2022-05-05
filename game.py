@@ -8,7 +8,7 @@ size = [800, 800]
 res = [400, 400]
 window = pygame.display.set_mode(size)
 screen = pygame.transform.scale(window, res)
-
+white = pygame.Color((255, 0, 0))
 
 chunk_size = 8
 tile_size = 16
@@ -47,8 +47,8 @@ def chunks_on_screen():
 
 	return result
 
-def draw_Hero():
-	pygame.draw.circle(screen, black, (cam_x, cam_y), 20)
+#def draw_Hero():
+	#pygame.draw.circle(screen, black, (cam_x, cam_y), 20)
 
 def generate_tile(x, y, chunk_x, chunk_y):
 	tile_x = (chunk_x//tile_size)+x
@@ -76,8 +76,8 @@ for y in range(world_size_chunk_y):
 
 frame = 0
 while 1:
-	draw_Hero()
 	screen.fill((0, 0, 0))
+	pygame.draw.circle(screen, white, (cam_x, cam_y), 30)
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			exit()
