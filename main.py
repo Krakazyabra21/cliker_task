@@ -16,18 +16,22 @@ class Window(QMainWindow):
         self.main_text.adjustSize()
 
         self.btn_startplay = QtWidgets.QPushButton(self)
-        self.btn_startplay.move(100, 200)
+        self.btn_startplay.move(300, 200)
         self.btn_startplay.setText("Play")
         self.btn_startplay.setFixedWidth(200)
+        self.btn_startplay.clicked.connect(self.play_but)
 
         self.btn_exit = QtWidgets.QPushButton(self)
-        self.btn_exit.move(100, 250)
+        self.btn_exit.move(300, 250)
         self.btn_exit.setText("Exit")
-#        self.btn_exit.clicked.connect(self.exit_main())
+        self.btn_exit.clicked.connect(self.exit_main)
         self.btn_exit.setFixedWidth(200)
 
-#    def exit_main(self):
-#       sys.exit()
+    def exit_main(self):
+       sys.exit()
+
+    def play_but(self):
+        self.setVisible(False)
 
 def application():
     app = QApplication(sys.argv)
