@@ -2,6 +2,7 @@ import sys
 
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from main_game import MainGame
 
 class Window(QMainWindow):
     def __init__(self):
@@ -17,7 +18,7 @@ class Window(QMainWindow):
 
         self.btn_startplay = QtWidgets.QPushButton(self)
         self.btn_startplay.move(300, 200)
-        self.btn_startplay.setText("Play")
+        self.btn_startplay.setText("Мяу")
         self.btn_startplay.setFixedWidth(200)
         self.btn_startplay.clicked.connect(self.play_but)
 
@@ -32,6 +33,8 @@ class Window(QMainWindow):
 
     def play_but(self):
         self.setVisible(False)
+        self.mainWindow = MainGame()
+
 
 def application():
     app = QApplication(sys.argv)
