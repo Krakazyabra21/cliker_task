@@ -41,30 +41,23 @@ class MainGame(QMainWindow):
         self.show()
 
     def buttonIJClick(self):
-        press = {}
-        d = 0
-        H_press = 0
-        #print(self.sender().x, self.sender().y)
+        # print(self.sender().x, self.sender().y)
         x = self.sender().x
         y = self.sender().y
+        #'''
         color = self.sender().color
-        '''
         if (x > 1):
-            b = self.buttons[x-1, y]
+            b = self.buttons[x - 1, y]
             if color == b.color:
-                if d not in press:
-                    press[H_press] = {d: {b.x, b.y}}
-                    H_press += 1
-                    d += 1
-                    b.click()
-                    print(press)
-        '''
+                b.click()
+        #'''
         '''
         if (y > 1):
             b = self.buttons[x, y - 1]
             if color == b.color:
                 b.click()
-
+        '''
+        '''
         if (x < 8):
             b = self.buttons[x + 1, y]
             if color == b.color:
@@ -76,12 +69,12 @@ class MainGame(QMainWindow):
             if color == b.color:
                 b.click()
         '''
+        self.__ui.gridLayout_4.removeWidget(self.sender())
+        print('Удалён: ' + self.sender().color)
+        # for i in range(1, 9):
+        #     for j in range(1, 9):
 
-        for d in range(len(press)):
-            self.sender().x = press[d(x)]
-            self.sender().y = press[d(y)]
-            self.__ui.gridLayout_4.removeWidget(self.sender())
-            del self.buttons[self.sender().x, self.sender().y]
+        del self.buttons[self.sender().x, self.sender().y]
             #print('Удалён: ' + self.sender().color)
        # for i in range(1, 9):
        #     for j in range(1, 9):

@@ -6,9 +6,12 @@ from main_game import MainGame
 
 class Window(QMainWindow):
     def __init__(self):
+        x_main = 800
+        y_main = 600
         super(Window, self).__init__()
         self.setWindowTitle("Игрушка")
-        self.setGeometry(300, 250, 800, 600)
+        self.setFixedSize(x_main, y_main)
+       #self.setGeometry(300, 250, x_main, y_main)
 
         self.main_text = QtWidgets.QLabel(self)
         self.main_text.setText("Кликомания")
@@ -17,14 +20,15 @@ class Window(QMainWindow):
         self.main_text.adjustSize()
 
         self.btn_startplay = QtWidgets.QPushButton(self)
-        self.btn_startplay.move(300, 200)
-        self.btn_startplay.setText("Мяу")
+        self.btn_startplay.move(x_main//2-100, y_main//2-100)
+        self.btn_startplay.setText("Играть")
         self.btn_startplay.setFixedWidth(200)
+        self.btn_startplay.setFixedHeight(50)
         self.btn_startplay.clicked.connect(self.play_but)
 
         self.btn_exit = QtWidgets.QPushButton(self)
-        self.btn_exit.move(300, 250)
-        self.btn_exit.setText("Exit")
+        self.btn_exit.move(x_main//2-100, y_main//2)
+        self.btn_exit.setText("Выход")
         self.btn_exit.clicked.connect(self.exit_main)
         self.btn_exit.setFixedWidth(200)
 
