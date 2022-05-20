@@ -18,7 +18,8 @@ class MainGame(QMainWindow):
             for j in range(1, 9):
                 #number += 1
                 color = colorList[random.randrange(0, 5)]
-                button_ij = MyButton(i, j, color, self)
+                but_cl = False
+                button_ij = MyButton(i, j, color, but_cl, self)
                 #button_ij.setText(str(i))
                 button_ij.setFixedWidth(50)
                 button_ij.setFixedHeight(50)
@@ -26,7 +27,7 @@ class MainGame(QMainWindow):
                 button_ij.clicked.connect(self.buttonIJClick)
                 #button_ij_id = str(i) + '_' + str(j)
                 self.__ui.gridLayout_4.addWidget(button_ij, i, j)
-                self.buttons[i,j] = button_ij
+                self.buttons[i, j] = button_ij
 
         self.__ui.gridLayout_4.addItem(self.firstSpacer, 0, 0, 1, 1)
         # button1 = QtWidgets.QPushButton("1", self)
@@ -41,24 +42,25 @@ class MainGame(QMainWindow):
         self.show()
 
     def buttonIJClick(self):
-        press = {}
-        d = 0
-        H_press = 0
         #print(self.sender().x, self.sender().y)
         x = self.sender().x
         y = self.sender().y
         color = self.sender().color
-        '''
+
         if (x > 1):
             b = self.buttons[x-1, y]
+            print(self.sender().x, self.sender().y)
             if color == b.color:
+                self.sender().but_cl = True
+                '''
                 if d not in press:
                     press[H_press] = {d: {b.x, b.y}}
                     H_press += 1
                     d += 1
-                    b.click()
+                    #b.click()
                     print(press)
-        '''
+                
+                '''
         '''
         if (y > 1):
             b = self.buttons[x, y - 1]
@@ -69,20 +71,21 @@ class MainGame(QMainWindow):
             b = self.buttons[x + 1, y]
             if color == b.color:
                 b.click()
-        '''
-        '''
+
         if (y < 8):
             b = self.buttons[x, y + 1]
             if color == b.color:
                 b.click()
         '''
-
-        for d in range(len(press)):
-            self.sender().x = press[d(x)]
-            self.sender().y = press[d(y)]
-            self.__ui.gridLayout_4.removeWidget(self.sender())
-            del self.buttons[self.sender().x, self.sender().y]
+        #'''
+        for i in range(1, 9):
+            for j in range(1,9):
+               # print(i, j)
+                if self.sender().but_cl == True:
+                     self.__ui.gridLayout_4.removeWidget(self)
+                     del self.buttons[i, j]
             #print('Удалён: ' + self.sender().color)
        # for i in range(1, 9):
        #     for j in range(1, 9):
+#'''
 
