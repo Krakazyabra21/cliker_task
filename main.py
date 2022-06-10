@@ -20,14 +20,21 @@ class Window(QMainWindow):
         self.main_text.adjustSize()
 
         self.btn_startplay = QtWidgets.QPushButton(self)
-        self.btn_startplay.move(x_main//2-100, y_main//2-100)
+        self.btn_startplay.move(x_main//2 - 100, y_main//2 - 100)
         self.btn_startplay.setText("Играть")
         self.btn_startplay.setFixedWidth(200)
         self.btn_startplay.setFixedHeight(50)
-        self.btn_startplay.clicked.connect(self.play_but)
+        self.btn_startplay.clicked.connect(self.play_main)
+
+        self.btn_opt = QtWidgets.QPushButton(self)
+        self.btn_opt.move(x_main // 2 - 100, y_main // 2 - 50)
+        self.btn_opt.setText("Настройки")
+        #self.btn_opt.clicked.connect(self.opt_main)
+        self.btn_opt.setFixedWidth(200)
+        self.btn_opt.setFixedHeight(50)
 
         self.btn_exit = QtWidgets.QPushButton(self)
-        self.btn_exit.move(x_main//2-100, y_main//2)
+        self.btn_exit.move(x_main//2 - 100, y_main//2)
         self.btn_exit.setText("Выход")
         self.btn_exit.clicked.connect(self.exit_main)
         self.btn_exit.setFixedWidth(200)
@@ -35,7 +42,7 @@ class Window(QMainWindow):
     def exit_main(self):
        sys.exit()
 
-    def play_but(self):
+    def play_main(self):
         self.setVisible(False)
         self.mainWindow = MainGame()
 

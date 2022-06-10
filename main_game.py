@@ -32,9 +32,10 @@ class MainGame(QMainWindow):
         #self.label_yellow_score.setText =
         self.score = 0
         self.mult = 1
+        self.but_del = 1
         self.buttons = {}
         self.endClick = False
-        self.maxRange = 9
+        self.maxRange = 10
         for i in range(1, self.maxRange):
             label1 = QtWidgets.QLabel('')
             label2 = QtWidgets.QLabel('')
@@ -67,7 +68,6 @@ class MainGame(QMainWindow):
         self.show()
 
     def buttonIJClick(self):
-
         # print(self.sender().x, self.sender().y)
         x = self.sender().x
         y = self.sender().y
@@ -81,33 +81,48 @@ class MainGame(QMainWindow):
             b = self.buttons[x - 1, y]
             print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
+                self.but_del += 1
                 b.click()
                 self.mult += 1.5
+            else:
+                self.sender().but_cl = False
+
         if (x, y - 1) in self.buttons:
             b = self.buttons[x, y - 1]
             print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
+                self.but_del += 1
                 b.click()
                 self.mult += 1.5
+            else:
+                self.sender().but_cl = False
 
         if (x + 1, y) in self.buttons:
             b = self.buttons[x + 1, y]
             print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
+                self.but_del += 1
                 b.click()
                 self.mult += 1.5
+            else:
+                self.sender().but_cl = False
 
         if (x, y + 1) in self.buttons:
             b = self.buttons[x, y + 1]
             print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
+                self.but_del += 1
                 b.click()
                 self.mult += 1.5
+            else:
+                self.sender().but_cl = False
 
-        self.__ui.gridLayout_4.removeWidget(self.sender())
-        print('Удалён: ' + self.sender().color)
         self.labelScore[self.sender().color] += 1
-        del self.buttons[self.sender().x, self.sender().y]
+        if self.but_del > 1:
+            print('Удалён: ' + self.sender().color)
+            self.__ui.gridLayout_4.removeWidget(self.sender())
+            del self.buttons[self.sender().x, self.sender().y]
+
 
         if self.clickButton == (x, y):
             self.endClick = False
@@ -139,7 +154,9 @@ class MainGame(QMainWindow):
                             self.buttons[i, j - l].y -= l
                             self.__ui.gridLayout_4.addWidget(self.buttons[i, j - l], i, j-l)
                             del self.buttons[i, j]
-            self.labelScoreUpdate()
+            if self.but_del > 1:
+                self.labelScoreUpdate()
+            self.but_del = 1
             self.mult = 1
 
 
