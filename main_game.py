@@ -84,41 +84,34 @@ class MainGame(QMainWindow):
                 self.but_del += 1
                 b.click()
                 self.mult += 1.5
-            else:
-                self.sender().but_cl = False
+
 
         if (x, y - 1) in self.buttons:
             b = self.buttons[x, y - 1]
             print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
                 self.but_del += 1
-                b.click()
                 self.mult += 1.5
-            else:
-                self.sender().but_cl = False
+                b.click()
 
         if (x + 1, y) in self.buttons:
             b = self.buttons[x + 1, y]
             print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
                 self.but_del += 1
-                b.click()
                 self.mult += 1.5
-            else:
-                self.sender().but_cl = False
+                b.click()
 
         if (x, y + 1) in self.buttons:
             b = self.buttons[x, y + 1]
             print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
                 self.but_del += 1
-                b.click()
                 self.mult += 1.5
-            else:
-                self.sender().but_cl = False
+                b.click()
 
         self.labelScore[self.sender().color] += 1
-        if self.but_del > 1:
+        if self.but_del >= 1:
             print('Удалён: ' + self.sender().color)
             self.__ui.gridLayout_4.removeWidget(self.sender())
             del self.buttons[self.sender().x, self.sender().y]
@@ -154,9 +147,9 @@ class MainGame(QMainWindow):
                             self.buttons[i, j - l].y -= l
                             self.__ui.gridLayout_4.addWidget(self.buttons[i, j - l], i, j-l)
                             del self.buttons[i, j]
-            if self.but_del > 1:
+            if self.but_del >= 1:
                 self.labelScoreUpdate()
-            self.but_del = 1
+            self.but_del = 0
             self.mult = 1
 
 
