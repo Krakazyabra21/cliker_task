@@ -95,7 +95,6 @@ class MainGame(QMainWindow):
 
         if (x, y - 1) in self.buttons:
             b = self.buttons[x, y - 1]
-            print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
                 self.but_del += 1
                 self.mult += 1.5
@@ -103,7 +102,6 @@ class MainGame(QMainWindow):
 
         if (x + 1, y) in self.buttons:
             b = self.buttons[x + 1, y]
-            print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
                 self.but_del += 1
                 self.mult += 1.5
@@ -111,7 +109,6 @@ class MainGame(QMainWindow):
 
         if (x, y + 1) in self.buttons:
             b = self.buttons[x, y + 1]
-            print(self.sender().x, self.sender().y)
             if (color == b.color) and (b.but_cl == False):
                 self.but_del += 1
                 self.mult += 1.5
@@ -166,8 +163,6 @@ class MainGame(QMainWindow):
                 self.zero_click()
                 self.isStart = False
 
-                        #self.__ui.gridLayout_4.addItem(self.__ui.gridLayout_4.itemAtPosition(i, j), i + 1, j)
-                    #    self.__ui.gridLayout_4.removeItem(self.__ui.gridLayout_4.itemAtPosition(i, j))
 
     def zero_click(self):
         self.end = False
@@ -200,7 +195,6 @@ class MainGame(QMainWindow):
             self.msbox_end()
 
     def msbox_end(self):
-
             msgBox = QtWidgets.QMessageBox()
             msgBox.setIcon(QtWidgets.QMessageBox.Information)
             msgBox.setText("Игра закончена. Попробовать снова?")

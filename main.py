@@ -84,7 +84,7 @@ class Window(QMainWindow):
         self.btn_bmenu.move(self.x_main - 150, self.y_main - 50)
         self.comb_s.move(self.x_main // 2 - 100, self.y_main // 2 - 30)
         self.lab_comb.move(self.x_main // 2 - 100, self.y_main // 2 - 50)
-        self.btn_acc.move(self.x_main - 150, self.y_main // 2 - 50)
+        self.btn_acc.move(self.x_main//2, self.y_main - 50)
 
     def play_main(self):
         self.setVisible(False)
